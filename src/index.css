@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-obsidian: #0E1116;
+    --bg-basalt: #12151B;
+    --bg-elevated: #171B23;
+    --bg-limestone: #F4EFE8;
+    --bronze-base: #B8925A;
+    --bronze-radiant: #D2AE78;
+    --text-primary-dark: #F4EFE8;
+    --text-secondary-dark: rgba(244, 239, 232, 0.65);
+    --text-muted-dark: rgba(244, 239, 232, 0.40);
+    --text-primary-light: #0E1116;
+    --text-secondary-light: rgba(14, 17, 22, 0.70);
+    --text-muted-light: rgba(14, 17, 22, 0.45);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #0E1116;
+    color: #F4EFE8;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-mono-tabular {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-balance {
+  text-wrap: balance;
+}

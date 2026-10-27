@@ -1,0 +1,6 @@
+{
+  "name": "ARCOVA — Bahria Orchard & Town Real Estate Atelier",
+  "description": "Architectural real estate consultancy, interactive plot & property monograph, and verified business profile for Bahria Town & Bahria Orchard Lahore.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
