@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PhotoSpecimen, PropertyPlot } from '../data/bahriaData';
 
 export const ArchitecturalPlate: React.FC<{
   sceneType: PhotoSpecimen['sceneType'];
+  imageUrl?: string;
+  alt?: string;
   className?: string;
-}> = ({ sceneType, className = '' }) => {
+}> = ({ sceneType, imageUrl, alt = 'Real Estate In Bahria Town / Orchard Lahore', className = '' }) => {
+  const [imgError, setImgError] = useState(false);
+
+  if (imageUrl && !imgError) {
+    return (
+      <img
+        src={imageUrl}
+        alt={alt}
+        referrerPolicy="no-referrer"
+        onError={() => setImgError(true)}
+        className={`w-full h-full object-cover ${className}`}
+      />
+    );
+  }
+
   switch (sceneType) {
     case 'atelier-lobby':
       return (

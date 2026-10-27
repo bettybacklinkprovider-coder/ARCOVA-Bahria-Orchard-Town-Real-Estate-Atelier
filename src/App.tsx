@@ -233,6 +233,48 @@ export default function App() {
           {/* Left Column (5 cols): Complete Business Profile & Dossier Card */}
           <div className="lg:col-span-5 bg-[#12151B] border border-[#F4EFE8]/10 rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
             <div className="space-y-5">
+              {/* Featured Business Profile 4-Photo Collage */}
+              <div className="space-y-2">
+                <div
+                  onClick={() => setLightboxPhoto(photos[0])}
+                  className="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden border border-[#F4EFE8]/10 bg-[#0B0E13] cursor-pointer group"
+                >
+                  <ArchitecturalPlate
+                    sceneType="atelier-lobby"
+                    imageUrl={photos[0]?.imageUrl || BUSINESS_PROFILE.heroImageUrl}
+                    alt={BUSINESS_PROFILE.name}
+                    className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E1116]/85 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between text-xs text-[#F4EFE8]/90">
+                    <span className="font-mono-tabular">Tower 3 · Office # 17</span>
+                    <span className="flex items-center gap-1.5 text-[#D2AE78]">
+                      <Camera className="w-3.5 h-3.5" />
+                      <span>See photos ({photos.length})</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* 3 Thumbnail Strip for the remaining uploaded office photos */}
+                <div className="grid grid-cols-3 gap-2">
+                  {photos.slice(1, 4).map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setLightboxPhoto(item)}
+                      className="relative h-20 rounded-lg overflow-hidden border border-[#F4EFE8]/10 hover:border-[#D2AE78] bg-[#0B0E13] group focus:outline-none"
+                    >
+                      <ArchitecturalPlate
+                        sceneType={item.sceneType}
+                        imageUrl={item.imageUrl}
+                        alt={item.title}
+                        className="transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               {/* Quiet Architectural Kicker (Unboxed text with · separators) */}
               <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.16em] text-[#D2AE78]">
                 <span>Bahria Orchard</span>
@@ -598,7 +640,11 @@ export default function App() {
               >
                 <div className="relative h-60 overflow-hidden bg-[#0B0E13]">
                   <div className="w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]">
-                    <ArchitecturalPlate sceneType={specimen.sceneType} />
+                    <ArchitecturalPlate
+                      sceneType={specimen.sceneType}
+                      imageUrl={specimen.imageUrl}
+                      alt={specimen.title}
+                    />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0E1116] via-transparent to-transparent opacity-80" />
                   <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-[#F4EFE8]/85">
@@ -1145,7 +1191,11 @@ export default function App() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="h-80 sm:h-96 bg-[#0B0E13]">
-              <ArchitecturalPlate sceneType={lightboxPhoto.sceneType} />
+              <ArchitecturalPlate
+                sceneType={lightboxPhoto.sceneType}
+                imageUrl={lightboxPhoto.imageUrl}
+                alt={lightboxPhoto.title}
+              />
             </div>
             <div className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
